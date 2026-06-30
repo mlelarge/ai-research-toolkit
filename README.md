@@ -12,14 +12,18 @@ A field report on using AI for everyday mathematical research on a modest budget
 
 | Folder | Use case | What's here |
 | --- | --- | --- |
-| [`Teaching/`](Teaching/) | Teaching | Exposing a course to AI agents via CLI / REST API / MCP server (`dataflowr-tools`). |
-| [`Review/`](Review/) | Refereeing papers | [`harsh_review.md`](Review/harsh_review.md) — a prompt for an uncompromising, no-flattery review, plus the review workflow. |
-| [`Informal_maths/`](Informal_maths/) | Informal mathematics & literature survey | Agent-driven literature review and conjecture exploration (see [graph-conjectures](https://github.com/mlelarge/graph-conjectures)). |
-| [`Formal_maths/`](Formal_maths/) | Formal mathematics | Generating Rocq proofs verified by the Rocq kernel, with a dedicated MCP server (see [LLM4Rocq](https://github.com/LLM4Rocq/)). |
-| [`Coding/`](Coding/) | Coding | Notes on Claude's coding features: permissions, MCP, Skills, Hooks, agent teams, dynamic workflows, and Docker / Apptainer containers. |
+| [`Teaching/`](Teaching/) | Teaching | Expose a course (notes, notebooks, slides) to agents and students through three surfaces over the *same* content — CLI / skill, REST API, MCP server (`dataflowr-tools`). |
+| [`Review/`](Review/) | Refereeing papers | [`harsh_review.md`](Review/harsh_review.md) — a prompt for an uncompromising, no-flattery referee report, plus the review workflow. |
+| [`Informal_maths/`](Informal_maths/) | Informal mathematics | Two agent pipelines: a breadth-first **survey** of a whole corpus (status of ~1,000 conjectures) and a depth-first **engine** that attacks a single open conjecture against an oracle (see [graph-conjectures](https://github.com/mlelarge/graph-conjectures)). |
+| [`Formal_maths/`](Formal_maths/) | Formal mathematics | Proofs an agent can't fake: it writes [Rocq](https://rocq-prover.org/), the kernel checks it. Uses a dedicated MCP server for live proof interaction (see [LLM4Rocq](https://github.com/LLM4Rocq/)). |
+| [`Coding/`](Coding/) | Coding | The **shared toolbox** the other folders build on — the Claude Code primitives: permissions, MCP, Skills, Hooks, subagents, dynamic workflows, `claude -p`, and Docker / Apptainer containers. |
 
-> Note: this is a work in progress — several folders are placeholders that will be
-> filled in as the corresponding material is cleaned up and published.
+The recurring idea across all of them: **don't trust the model's word — wire its
+output to something that can reject it** (a proof kernel, a compiler, verified
+citations, an exact oracle).
+
+> Each folder's README explains the reusable *pattern*; the runnable code lives in
+> the linked repositories. This is a living collection, still being filled in.
 
 
 ## Feedback
