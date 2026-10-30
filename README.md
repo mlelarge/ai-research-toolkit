@@ -16,6 +16,7 @@ A field report on using AI for everyday mathematical research on a modest budget
 | [`Review/`](Review/) | Refereeing papers | [`harsh_review.md`](Review/harsh_review.md) — a prompt for an uncompromising, no-flattery referee report, plus the review workflow. |
 | [`Informal_maths/`](Informal_maths/) | Informal mathematics | Two agent pipelines: a breadth-first **survey** of a whole corpus (status of ~1,000 conjectures) and a depth-first **engine** that attacks a single open conjecture against an oracle (see [graph-conjectures](https://github.com/mlelarge/graph-conjectures)). |
 | [`Formal_maths/`](Formal_maths/) | Formal mathematics | Proofs an agent can't fake: it writes [Rocq](https://rocq-prover.org/), the kernel checks it. Uses a dedicated MCP server for live proof interaction (see [LLM4Rocq](https://github.com/LLM4Rocq/)). |
+| [`HPC/`](HPC/) | Formal mathematics at scale (HPC) | The [`Formal_maths/`](Formal_maths/) proof loop **at scale on a supercomputer**: open-weight LLMs served with SGLang on H100 nodes of Jean Zay (France's national supercomputer) prove theorems in Rocq (and Lean) in Slurm jobs, and every accepted proof is **rechecked independently**. Setting only, no results. |
 | [`Coding/`](Coding/) | Coding | The **shared toolbox** the other folders build on — the Claude Code primitives: permissions, MCP, Skills, Hooks, subagents, dynamic workflows, `claude -p`, and Docker / Apptainer containers. |
 
 The recurring idea across all of them: **don't trust the model's word — wire its
