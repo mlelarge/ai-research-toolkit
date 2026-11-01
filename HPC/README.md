@@ -83,12 +83,14 @@ between turns while room lasts, so a turn processes only its new tokens.
 
 ### One attempt (the agent loop)
 
-The benchmark is unpublished: **46 anonymized problems**, each stated in Lean 4
-(Mathlib) and Rocq 9.2 (MathComp). In Rocq each has a **minimal** variant (only
-the statement's imports) and an **imports** variant (every library a known proof
-uses). An **arm** gives one model one attempt at each of the 46 in one language,
-variant, tool set and protocol version. Each model also ran a bash-only Lean 4
-arm, with Lean's toolchain and checks; this README follows the Rocq side.
+The benchmark is [Lean-Rocq-bench](https://github.com/LLM4Rocq/lean-rocq-bench)
+(public since v1.0.0): **46 problems**, numbered in a random order, each stated
+in Lean 4 (Mathlib) and Rocq 9.2 (MathComp). In Rocq each has a **minimal**
+variant (only the statement's imports) and an **imports** variant (every library
+a known proof uses). An **arm** gives one model one attempt at each of the 46 in
+one language, variant, tool set and protocol version. Each model also ran a
+bash-only Lean 4 arm, with Lean's toolchain and checks; this README follows the
+Rocq side.
 
 The task: replace `Admitted` (Rocq's placeholder for a missing proof) with a
 proof, adding imports, definitions or lemmas at will; the theorem and its
@@ -195,9 +197,13 @@ compare the agent's file with the original. Within 900 s:
 
 ## Where the material lives
 
-Not published here: the job scripts, the modified harness, the benchmark and
-the logs. What is public:
+Not published here: the job scripts, the modified harness and the logs. What
+is public:
 
+- [`lean-rocq-bench`](https://github.com/LLM4Rocq/lean-rocq-bench) — the 46
+  problems, their Lean and Rocq statements and the official checkers. These runs
+  were judged with the checker as it was before v1.0.0, which ships a rewritten
+  one.
 - [`rocq-mcp-evolve`](https://github.com/LLM4Rocq/rocq-mcp-evolve) — the OCaml
   MCP server behind the session tools, at a pinned commit of its `rocq-9.2`
   branch (not the `rocq-mcp` of [`Formal_maths/`](../Formal_maths/)).
