@@ -74,6 +74,11 @@ between turns while room lasts, so a turn processes only its new tokens.
 | [DeepSeek-V4-Pro](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro) (preview checkpoint) | 4 (16) | TP8 × PP2 | MXFP4 experts, the rest mostly FP8 | FP8 | 1,048,576 | 3 |
 | [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) | 4 (16) | TP4 × PP4 | mostly FP8 | FP8 | 688,128 | 2 |
 
+The V4-Pro TP8 × PP2 layout required a custom SGLang plugin,
+`lrb_moe_prep_sliced`, that patches FlashInfer 0.6.18 to prepare the expert
+weights in smaller groups. Without it, this SGLang 0.5.20 setup ran out of GPU
+memory during weight conversion, before the KV cache was allocated.
+
 | Rule | How and why |
 |---|---|
 | **The KV cache, not only the weights, sets the layout** | These models keep one compressed (latent) KV head, which TP cannot split: under TP every GPU stores the whole cache of the layers it serves, under PP each stage only its own layers' cache. V4-Pro's weights need four nodes; on those 16 GPUs, two pipeline stages of 8 each hold the cache of half the layers, where 16-way TP would put the cache of every layer on every GPU, and that is what makes room for three lanes. GLM-5.3 needs its four nodes for the cache, not the weights. |
